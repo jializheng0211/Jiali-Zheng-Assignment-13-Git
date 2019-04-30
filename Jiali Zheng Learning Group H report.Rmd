@@ -1,5 +1,5 @@
 ---
-title: "R Notebook for Question 6 of Assignment 12"
+title: "R notebook for Assignment 13"
 output: html_notebook
 author: Jiali Zheng 
 ---
@@ -59,4 +59,4 @@ ggplot(data = hsb2) +
 The null hypothesis for the t test is that male high school students have the same math achievement with female students, and the alternative hypothesis is that male students do better in math in high school than female students. The P value for the t test is 0.6816, which means that there is a 68.16% of chance of observing the difference(0.55 points) in math scores if the two means are equal. This suggests that the estimate is not stable. If another sample of students were tested, the difference could be much different. The 95% confidence interval for the difference in means is -2.09 to 3.19 points, which means that male students' math score can be either higher or lower than that of female students. Cohen's d of 0.059 indicates that the effect size of the mean difference is neglible. All the above suggests that there is no evidence to say that male students do better in math than female students in high school. 
 
 ### Conclusion 
-There is no gender difference in high school students' math achievement. This suggests that it is time to stop the stereotype from being spread. 
+There is no gender difference in high school students' math achievement. This suggests that it is time to stop the stereotype from being spread, so it will not undermine female students' confidence in studying math and related subjects.
