@@ -9,6 +9,7 @@ author: Jiali Zheng
 The HSB2 data contains information about high school students' grades in math, reading, science, social sciences and writing, as well as demographic information such as gender, race, socio economic status(SES), and the type of school and type of program they study in. Stereotype has is that female students may not be as good in math as male students starting from middle school. Previous research studies have yielded inconsistent findings on gender differences in students' math achievement. Therefore, the research question for this study is: Do male students have higher achivement in math than female students high school?
 
 #### Methods
+Participants were 200 high school students, with 92 males and 108 females.
 To answer the research question, a t test will be conducted to compare the mean differences in male and female students' math scores. Before conducting the t test, normality of the data will be checked. P values of the t statistic, confidence interval, and effect size(Cohen's d) will be used to determine if gender difference in math achievement is big.
 ```{r}
 library(tidyverse)
