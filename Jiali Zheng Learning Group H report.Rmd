@@ -1,5 +1,5 @@
 ---
-title: "R Notebook for Assignment 13"
+title: "Jiali Zheng Assignment 13 Git"
 output: html_notebook
 author: Jiali Zheng 
 ---
