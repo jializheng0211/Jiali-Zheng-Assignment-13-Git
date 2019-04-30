@@ -1,0 +1,61 @@
+---
+title: "R Notebook for Question 6 of Assignment 12"
+output: html_notebook
+author: Jiali Zheng 
+---
+### Gender Differences in High School Students' Math Achievement? 
+
+#### Introduction 
+The HSB2 data contains information about high school students' grades in math, reading, science, social sciences and writing, as well as demographic information such as gender, race, socio economic status(SES), and the type of school and type of program they study in. Stereotype has is that female students may not be as good in math as male students starting from middle school. Previous research studies have yielded inconsistent findings on gender differences in students' math achievement. Therefore, the research question for this study is: Do male students have higher achivement in math than female students high school?
+
+#### Methods
+To answer the research question, a t test will be conducted to compare the mean differences in male and female students' math scores. Before conducting the t test, normality of the data will be checked. P values of the t statistic, confidence interval, and effect size(Cohen's d) will be used to determine if gender difference in math achievement is big.
+```{r}
+library(tidyverse)
+# Read in the data.
+hsb2 <- read_csv("hsb2.csv")
+```
+
+```{r}
+# prepare data: coerce the female variable into a factor and assign labels to the two levels.
+hsb2$female <- factor(hsb2$female, levels = c(0:1), 
+                      labels = c("Male", "Female"))
+```
+
+```{r}
+# check normality of the math and science scores: the data are normally distributed 
+library("car")
+qqPlot(hsb2$math)
+```
+##### Descriptive Statistics
+```{r}
+# Mean and standard deviation of math and science score by gender.
+table(hsb2$female)
+hsb2 %>%
+    group_by(female) %>%
+    summarize(math_mean = mean(math, na.rm = TRUE),
+               math_sd = sd(math, na.rm = TRUE))
+```
+#### Inferential Statistics
+```{r}
+t.test(math ~ female, alternative = "greater", data = hsb2)
+```
+
+```{r}
+library("effsize") # seems pooled sd is more appropriate for independent sample t test
+cohen.d(hsb2$math, hsb2$female, pooled=TRUE, paired=FALSE, na.rm=TRUE, conf.level=0.95)
+```
+#### Boxplot for Relationship between Gender and Math Achievement.
+```{r}
+# Plot the relationship between the strong predictors(SES, program and race) and outcome variable.
+ggplot(data = hsb2) + 
+  geom_boxplot(aes(x = female, y = math, group = female, colour = female)) +
+  labs(title = "Math Achievement by Gender",
+       x = "Gender",
+       y = "Math Achievement")
+```
+### Analysis of T Test Results
+The null hypothesis for the t test is that male high school students have the same math achievement with female students, and the alternative hypothesis is that male students do better in math in high school than female students. The P value for the t test is 0.6816, which means that there is a 68.16% of chance of observing the difference(0.55 points) in math scores if the two means are equal. This suggests that the estimate is not stable. The 95% confidence interval for the difference in means is -2.09 to 3.19 points, which means that male students' math score can be either higher or lower than that of female students. Cohen's d of 0.059 indicates that the effect size of the mean difference is neglible. All the above suggests that there is no evidence to say that male students do better in math than female students in high school. 
+
+### Conclusion 
+There is no gender difference in high school students' math achievement. This suggests that it is time to stop the stereotype from being spread. 
