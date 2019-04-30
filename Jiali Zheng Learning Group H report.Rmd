@@ -1,5 +1,5 @@
 ---
-title: "Jiali Zheng Assignment 13 Git"
+title: "Jiali Zheng Assignment 13"
 output: html_notebook
 author: Jiali Zheng 
 ---
